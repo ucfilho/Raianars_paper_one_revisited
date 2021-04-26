@@ -1,0 +1,76 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library('DEoptimR')
+
+
+Ackley= function(x)
+  {
+  Num=length(x)
+	firstSum = 0.0
+	secondSum = 0.0
+	Euler=exp(1)
+	for (i in 1:Num)
+	  {
+		firstSum =firstSum+ x[i]**2.0
+		secondSum=secondSum+ cos(2.0*pi*x[i])
+		}
+	fun=-20.0*exp(-0.2*sqrt(firstSum/Num)) - exp(secondSum/Num) + 20 +Euler
+  return(fun)
+  }
+# f(x)=0 x=(0,0) [−32, 32]
+
+ITE=2000
+dim=30
+RUNS=50
+Y=0;X=0
+NPAR=100
+Bounds=32
+for(i in 1:RUNS)
+  {
+  JDE_R=JDEoptim(rep(-Bounds, dim), rep(Bounds, dim), Ackley,
+         tol = 1e-20,NP=NPAR, trace = FALSE,  maxiter =ITE)
+  Y[i]=JDE_R$value
+
+  }
+
+
+
+MEAN=mean(Y)
+STD=sd(Y)
+MAX=max(Y)
+MIN=min(Y)
+cat('Ackley JDE DIM=',dim,'RUNS=',RUNS,'Bounds=',-Bounds, Bounds,'\n')
+cat('MEAN=',MEAN,'\n')
+cat('MAX',MAX,'\n')
+cat('MIN=',MIN,'\n')
+cat('STD',STD,'\n')
+
+
+```
+#JDE DIM= 10 RUNS= 50 ITE= 1500 
+#MEAN= 4.423129e-15 
+#MAX 7.549517e-15 
+#MIN= 3.996803e-15 
+#STD 1.166216e-15
+
+#JDE DIM= 10 RUNS= 50 ITE= 2000 
+#MEAN= 3.996803e-15 
+#MAX 3.996803e-15 
+#MIN= 3.996803e-15 
+#STD 0
+
+#JDE DIM= 30 RUNS= 50 ITE=1000
+#MEAN= 7.407408e-15 
+#MAX 7.549517e-15 
+#MIN= 3.996803e-15 
+#STD 7.032549e-16 
+
+
+
+
+
+
+
