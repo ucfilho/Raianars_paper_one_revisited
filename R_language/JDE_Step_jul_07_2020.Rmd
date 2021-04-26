@@ -1,0 +1,41 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library('DEoptimR')
+
+
+Step= function(x)
+  {
+  Num=length(x)
+	soma=0
+	for (i in 1:Num)
+	  {
+		soma=soma+(x[i]+0.5)**2
+		}
+	fun=soma
+  return(fun)
+  }
+# f(x)=0 , x=(0,0,...,0) [-100,100]
+dim=10
+RUNS=50
+ITE=2000
+NPAR=100
+Bounds=100
+Y=0;X=0
+for(i in 1:RUNS)
+  {
+  JDE_R=JDEoptim(rep(-Bounds, dim), rep(Bounds, dim), Step ,
+         tol = 1e-200,NP=NPAR, trace = FALSE,  maxiter =ITE)
+  Y[i]=JDE_R$value
+  }
+MEAN=mean(Y)
+STD=sd(Y)
+MAX=max(Y)
+MIN=min(Y)
+cat('Step JDE DIM=',dim,'RUNS=',RUNS,'ITE=',ITE,'Bounds=',-Bounds,Bounds,'\n')
+cat('MEAN=',MEAN,'\n')
+cat('MAX',MAX,'\n')
+cat('MIN=',MIN,'\n')
+cat('STD',STD,'\n')

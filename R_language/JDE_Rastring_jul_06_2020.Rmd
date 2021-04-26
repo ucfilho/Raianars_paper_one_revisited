@@ -1,0 +1,58 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library('DEoptimR')
+
+
+Rastrigin= function(x)
+  {
+  Num=length(x)
+	Sum = 0.0
+
+	for (i in 1:Num)
+	  {
+		Sum =Sum+ x[i]**2.0-10*cos(2.0*pi*x[i])
+		}
+	fun=10.0*Num+Sum
+  return(fun)
+  }
+# f(x)=0 x=(0,0) [−5.12, 5.12]
+
+
+dim=30
+NPAR=100
+Bounds=5.12
+RUNS=50
+ITE=2000
+Y=0;X=0
+
+for(i in 1:RUNS)
+  {
+  JDE_R=JDEoptim(rep(-Bounds, dim), rep(Bounds, dim), Rastrigin,
+         tol = 1e-100,NP=NPAR, trace = FALSE,  maxiter =ITE)
+  Y[i]=JDE_R$value
+
+  }
+
+
+
+MEAN=mean(Y)
+STD=sd(Y)
+MAX=max(Y)
+MIN=min(Y)
+cat('Rastrigin JDE DIM=',dim,'RUNS=',RUNS,'ITE=',ITE,'Bounds=',-Bounds,Bounds,'\n')
+cat('MEAN=',MEAN,'\n')
+cat('MAX',MAX,'\n')
+cat('MIN=',MIN,'\n')
+cat('STD',STD,'\n')
+
+
+```
+
+
+
+
+
+

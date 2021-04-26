@@ -1,0 +1,41 @@
+library('DEoptimR')
+
+Styblinskitank= function(x)
+  {
+  Num=length(x)
+	sumx1=0
+  sumx2=0
+  sumx4=0
+	for (i in 1:Num)
+	  {
+    sumx1=sumx1+x[i]
+    sumx2=sumx2+x[i]**2
+    sumx4=sumx4+x[i]**4
+		}
+	fun=(sumx4-16*sumx2+5*sumx1)/2
+  return(fun)
+  }
+# global minimum −39.16599∗n at x=(−2.903534,…,−2.903534) 
+# Not Convex it is usually evaluated  xi =[(-5,5),..(-5,5)]
+
+dim=30
+RUNS=50
+NPAR=100
+ITE=2000
+Bounds=5
+Y=0;X=0
+for(i in 1:RUNS)
+  {
+  JDE_R=JDEoptim(rep(-Bounds, dim), rep(Bounds, dim), Styblinskitank ,
+         tol = 1e-20,NP=NPAR, trace = FALSE,  maxiter =ITE)
+  Y[i]=JDE_R$value
+  }
+MEAN=mean(Y)
+STD=sd(Y)
+MAX=max(Y)
+MIN=min(Y)
+cat('Styblinskitank JDE DIM=',dim,'RUNS=',RUNS,'ITE=',ITE,'Bounds=',-Bounds,Bounds,'\n')
+cat('MEAN=',MEAN,'\n')
+cat('MAX',MAX,'\n')
+cat('MIN=',MIN,'\n')
+cat('STD',STD,'\n')
