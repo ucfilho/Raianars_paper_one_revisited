@@ -62,7 +62,7 @@ cat(MEAN,'\n')
 cat(STD,'\n')
 cat(MIN,'\n')
 
-PenaltyTwo JDE DIM= 10 RUNS= 50 ITE= 2000 Bounds -50 50 
+# PenaltyTwo JDE DIM= 10 RUNS= 50 ITE= 2000 Bounds -50 50 
 # MEAN= 2.412568e-21 
 # MAX 4.500444e-21 
 # MIN= 1.147559e-21 
