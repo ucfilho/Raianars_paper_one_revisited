@@ -61,13 +61,12 @@ cat('MAX',MAX,'\n')
 cat('MIN=',MIN,'\n')
 cat('STD',STD,'\n')
 
-# PenaltyOne JDE DIM= 30 RUNS= 50 ITE= 2000 Bounds -50 50 
-# MEAN= 2.441901e-21 
-# MAX 5.026278e-21 
-# MIN= 5.272156e-22 
-# STD 9.540766e-22 
+# PenaltyOne JDE DIM= 10 RUNS= 50 ITE= 2000 Bounds -50 50 
+# MEAN= 2.647454e-21 
+# MAX 5.097057e-21 
+# MIN= 6.213735e-22 
+# STD 9.966037e-22 
 
-# 2.441901e-21 
-# 9.540766e-22 
-# 5.272156e-22 
-
+# 2.647454e-21 
+# 9.966037e-22 
+# 6.213735e-22 
