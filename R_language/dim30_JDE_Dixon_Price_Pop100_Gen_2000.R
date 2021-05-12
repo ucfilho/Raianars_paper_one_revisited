@@ -79,14 +79,13 @@ cat('MIN=',MIN,'\n')
 cat('STD',STD,'\n')
 
 
-# Dixon Price JDE DIM= 30 RUNS= 50 ITE= 2000 Bounds -50 50 
+# Dixon Price JDE DIM= 30 RUNS= 50 ITE= 2000 Bounds -10 10 
 # MEAN= 0.6666667 
 # MAX 0.6666667 
 # MIN= 0.6666667 
-# STD 6.539381e-17
-
+# STD 6.728968e-17 
 
 # 0.6666667 
-# 6.539381e-17
+# 6.728968e-17
 # 0.6666667 
 
