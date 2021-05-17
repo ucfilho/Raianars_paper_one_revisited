@@ -1,25 +1,24 @@
 library('DEoptimR')
 
 
-Salomon= function(x)
+Schwefel_223= function(x)
   {
   Num=length(x)
-  sumx2=0
-  sqrtsx2=0
+  sumx10=0
+
 
   for (i in 1:Num)
   {
-   sumx2=sumx2+x[i]**2
-   sqrtsx2=sumx2**0.5
+   sumx10=sumx10+x[i]**10
+
    }
-   fun=1- cos(2*pi*sqrtsx2)+(0.1 * sqrtsx2)
+   fun=sumx10
    return(fun)
   }
 # f(x)=0 x=(0,0) , d=[-10,10]
 
 # f(x)=0 x=(0,0) [−10, 10]
 dim=30
-RUNS=50
 ITE=2000
 NPAR=100
 Bounds=100
@@ -41,13 +40,13 @@ cat('MAX',MAX,'\n')
 cat('MIN=',MIN,'\n')
 cat('STD',STD,'\n')
 
+# Schwefel_223 JDE DIM= 10 RUNS= 50 ITE= 2000 Bounds= 100 100 
+# MEAN= 1.129474e-142 
+# MAX= 2.961229e-141
+# MIN= 2.280723e-195
+# STD 5.316423e-142 
 
-Schwefel_223 JDE DIM= 30 RUNS= 50 ITE= 2000 Bounds= 10 10 
-# MEAN= 7.041517e-138 
-# MAX 3.520724e-136 
-# MIN= 2.20799e-198 
-# STD 4.979054e-137 
 
-# 7.041517e-138 
-# 4.979054e-137 
-# 2.20799e-198 
+# 1.129474e-142 
+# 5.316423e-142 
+# 2.280723e-195 
